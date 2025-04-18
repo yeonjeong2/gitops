@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cgv-server
-        image: duswjd/cgv-server:latest # Jenkins가 여기를 변경함
+        image: duswjd/cgv-server:4885a74
         ports:
         - containerPort: 8080
 
