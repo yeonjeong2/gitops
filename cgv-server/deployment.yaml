@@ -1,0 +1,22 @@
+# deployment.yaml 예시
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cgv-server
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cgv-server
+  template:
+    metadata:
+      labels:
+        app: cgv-server
+    spec:
+      containers:
+      - name: cgv-server
+        image: duswjd/cgv-server:latest # Jenkins가 여기를 변경함
+        ports:
+        - containerPort: 8080
+
