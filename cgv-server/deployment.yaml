@@ -1,22 +1,28 @@
-# deployment.yaml 예시
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
-  name: cgv-server
-  namespace: cgv-backend
+  name: cgv-server  # 앱 이름
+  namespace: cgv-backend        # 실제 사용하는 네임스페이스로 변경
 spec:
-  replicas: 1
+  replicas: 3
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 30s }
+        - setWeight: 50
+        - pause: { duration: 60s }
+        - setWeight: 100
   selector:
     matchLabels:
-      app: cgv-server
+      app: cgv-server   # Deployment에 사용되던 라벨과 일치해야 함
   template:
     metadata:
       labels:
         app: cgv-server
     spec:
       containers:
-      - name: cgv-server
-        image: duswjd/cgv-server:2773d18
-        ports:
-        - containerPort: 8080
-
+        - name: cgv-server
+          image: yeonjeong2/cgv-server:latest  # 실제 사용하는 이미지
+          ports:
+            - containerPort: 8080
