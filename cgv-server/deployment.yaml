@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cgv-server
-        image: duswjd/cgv-server:1d2547b
+        image: duswjd/cgv-server:2773d18
         ports:
         - containerPort: 8080
 
