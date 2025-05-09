@@ -30,6 +30,6 @@ spec:
               app: cgv-server
       containers:
         - name: cgv-server
-          image: duswjd/cgv-server:7a9a40f
+          image: 911167907616.dkr.ecr.ap-northeast-2.amazonaws.com/cgv-server:9a11360
           ports:
             - containerPort: 8080
