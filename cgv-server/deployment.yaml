@@ -21,6 +21,11 @@ spec:
       labels:
         app: cgv-server
     spec:
+      tolerations:
+      - key: "karpenter-only"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
       containers:
       - name: cgv-server
         image: 911167907616.dkr.ecr.ap-northeast-2.amazonaws.com/cgv-server:0737798
