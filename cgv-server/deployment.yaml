@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: cgv-server
-        image: 911167907616.dkr.ecr.ap-northeast-2.amazonaws.com/cgv-server:8a83e19
+        image: 911167907616.dkr.ecr.ap-northeast-2.amazonaws.com/cgv-server:0737798
         ports:
         - containerPort: 8080
         resources:                     # ✅ 추가
