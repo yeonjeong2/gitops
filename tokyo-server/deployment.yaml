@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cgv-server
+  namespace: cgv-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cgv-server
+  template:
+    metadata:
+      labels:
+        app: cgv-server
+    spec:
+      containers:
+        - name: cgv-server
+          image: 911167907616.dkr.ecr.ap-northeast-1.amazonaws.com/cgv-server:1434a6f
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "200m"
+            limits:
+              cpu: "300m"
+

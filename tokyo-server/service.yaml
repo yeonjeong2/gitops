@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cgv-server
+  namespace: cgv-backend
+spec:
+  selector:
+    app: cgv-server
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP
+

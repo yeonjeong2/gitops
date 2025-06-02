@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: cgv-server  # 앱 이름
-  namespace: cgv-backend        # 실제 사용하는 네임스페이스로 변경
+  name: cgv-server
+  namespace: cgv-backend
 spec:
-  replicas: 3
+  #replicas: 4
   strategy:
     canary:
       steps:
@@ -15,14 +15,24 @@ spec:
         - setWeight: 100
   selector:
     matchLabels:
-      app: cgv-server   # Deployment에 사용되던 라벨과 일치해야 함
+      app: cgv-server
   template:
     metadata:
       labels:
         app: cgv-server
     spec:
+      tolerations:
+      - key: "karpenter-only"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
       containers:
-        - name: cgv-server
-          image: duswjd/cgv-server:latest  # 실제 사용하는 이미지
-          ports:
-            - containerPort: 8080
+      - name: cgv-server
+        image: 911167907616.dkr.ecr.ap-northeast-2.amazonaws.com/cgv-server:6f93f01
+        ports:
+        - containerPort: 8080
+        resources:                     # ✅ 추가
+          requests:
+            cpu: "200m"
+          limits:
+            cpu: "300m"
