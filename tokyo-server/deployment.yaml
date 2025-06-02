@@ -4,7 +4,7 @@ metadata:
   name: cgv-server
   namespace: cgv-backend
 spec:
-  replicas: 3
+  replicas: 0
   selector:
     matchLabels:
       app: cgv-server
