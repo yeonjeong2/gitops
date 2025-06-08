@@ -33,6 +33,6 @@ spec:
         - containerPort: 8080
         resources:                     # ✅ 추가
           requests:
-            cpu: "300m"
+            cpu: "200m"
           limits:
-            cpu: "400m"
+            cpu: "300m"
