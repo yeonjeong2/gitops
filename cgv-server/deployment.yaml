@@ -28,7 +28,7 @@ spec:
         effect: "NoSchedule"
       containers:
       - name: cgv-server
-        image: 911167907616.dkr.ecr.ap-northeast-2.amazonaws.com/cgv-server:6f93f01
+        image: 911167907616.dkr.ecr.ap-northeast-2.amazonaws.com/cgv-server:4227da1
         ports:
         - containerPort: 8080
         resources:                     # ✅ 추가
