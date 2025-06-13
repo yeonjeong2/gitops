@@ -34,5 +34,7 @@ spec:
         resources:                     # ✅ 추가
           requests:
             cpu: "600m"
+            memory: "1024Mi"
           limits:
             cpu: "800m"
+            memory: "1056Mi"
